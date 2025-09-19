@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOPAdatbazis
 {
@@ -10,6 +6,9 @@ namespace OOPAdatbazis
     {
         static void Main(string[] args)
         {
+            Console.Write("Kérem az datbázis nevét: ");
+            string dbName = Console.ReadLine();
+            Connect conn = new Connect(dbName);
         }
     }
 }
