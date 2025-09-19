@@ -7,12 +7,55 @@ namespace OOPAdatbazis.Services
     {
         public object AddNewItem(object newRecord)
         {
-            throw new System.NotImplementedException();
+            Connect conn = new Connect("library");
+
+            conn.Connection.Open();
+
+            string sql = "INSERT INTO `books`(`title`, `author`, `releaseDate`) VALUES (@title,@author,@releaseDate)";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+
+            var record = newRecord.GetType().GetProperties();
+            cmd.Parameters.AddWithValue("@title", record[0].GetValue(newRecord));
+            cmd.Parameters.AddWithValue("@author", record[1].GetValue(newRecord));
+            cmd.Parameters.AddWithValue("@releaseDate", record[2].GetValue(newRecord));
+
+            cmd.ExecuteNonQuery();
+
+            conn.Connection.Close();
+
+            var result = new
+            {
+                message = "Sikeres felvétel.",
+                result = newRecord
+            };
+
+            return result;
         }
 
         public object DeleteItem(int id)
         {
-            throw new System.NotImplementedException();
+            Connect conn = new Connect("library");
+
+            conn.Connection.Open();
+
+            string sql = "DELETE FROM `books` WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Connection.Close();
+
+            var result = new
+            {
+                message = "Sikeres törlés.",
+
+            };
+
+            return result;
         }
 
         public List<object> GetAllData(string dbName)
