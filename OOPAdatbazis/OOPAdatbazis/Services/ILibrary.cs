@@ -4,6 +4,6 @@ namespace OOPAdatbazis.Services
 {
     internal interface ILibrary
     {
-        List<object> GetAllData();
+        List<object> GetAllData(string dbName);
     }
 }
