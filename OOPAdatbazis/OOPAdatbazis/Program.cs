@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPAdatbazis.Services;
+using System;
 
 namespace OOPAdatbazis
 {
@@ -8,7 +9,15 @@ namespace OOPAdatbazis
         {
             Console.Write("Kérem az datbázis nevét: ");
             string dbName = Console.ReadLine();
-            Connect conn = new Connect(dbName);
+
+            ILibrary dataBase = new Library();
+
+            foreach (var item in dataBase.GetAllData(dbName))
+            {
+                var books = item.GetType().GetProperties();
+                Console.WriteLine($"{books[0].Name}={books[0].GetValue(item)}, {books[1].Name}={books[1].GetValue(item)}");
+            }
+
         }
     }
 }
