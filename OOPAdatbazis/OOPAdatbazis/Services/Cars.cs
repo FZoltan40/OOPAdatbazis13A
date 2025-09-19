@@ -5,6 +5,16 @@ namespace OOPAdatbazis.Services
 {
     internal class Cars : ISqlStatements
     {
+        public object AddNewItem(object newRecord)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public object DeleteItem(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public List<object> GetAllData(string dbName)
         {
             Connect conn = new Connect(dbName);
@@ -25,10 +35,10 @@ namespace OOPAdatbazis.Services
             {
                 var car = new
                 {
-                    id = dr.GetInt32("id"),
-                    brand = dr.GetString("brand"),
-                    type = dr.GetString("type"),
-                    mDate = dr.GetDateTime("mDate")
+                    id = dr.GetBodyDefinition(dr.GetName(0)),
+                    brand = dr.GetBodyDefinition(dr.GetName(1)),
+                    type = dr.GetBodyDefinition(dr.GetName(2)),
+                    mDate = dr.GetDateTime(dr.GetName(3))
                 };
 
                 cars.Add(car);
@@ -36,6 +46,16 @@ namespace OOPAdatbazis.Services
             conn.Connection.Close();
 
             return cars;
+        }
+
+        public object GetById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public object UpdateItem(object modifiedItem)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
