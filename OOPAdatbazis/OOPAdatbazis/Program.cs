@@ -10,7 +10,7 @@ namespace OOPAdatbazis
             Console.Write("Kérem az datbázis nevét: ");
             string dbName = Console.ReadLine();
 
-            ILibrary dataBase = new Library();
+            ISqlStatements dataBase = new Cars();
 
             foreach (var item in dataBase.GetAllData(dbName))
             {

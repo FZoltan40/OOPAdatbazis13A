@@ -2,7 +2,7 @@
 
 namespace OOPAdatbazis.Services
 {
-    internal interface ILibrary
+    internal interface ISqlStatements
     {
         List<object> GetAllData(string dbName);
     }
