@@ -18,8 +18,19 @@ namespace OOPAdatbazis
                 Console.WriteLine($"{books[0].Name}={books[0].GetValue(item)}, {books[1].Name}={books[1].GetValue(item)}");
             }*/
 
-            Console.Write("Kérem a rekord id-jét: ");
-            Console.WriteLine(dataBase.GetById(int.Parse(Console.ReadLine())));
+            /*Console.Write("Kérem a rekord id-jét: ");
+            Console.WriteLine(dataBase.GetById(int.Parse(Console.ReadLine())));*/
+
+            /*var book = new
+            {
+                title = "Star wars",
+                author = "Lucas",
+                releaseDate = "1980-01-01"
+            };
+
+            dataBase.AddNewItem(book);*/
+
+            Console.WriteLine(dataBase.DeleteItem(101));
 
         }
     }
